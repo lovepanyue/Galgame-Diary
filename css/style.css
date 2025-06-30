@@ -29,7 +29,21 @@ body {
     overflow: hidden;
     animation: fadeIn 1.5s ease-out;
 }
+/* 登录链接样式 */
+.login-link {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
 
+.login-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
 .navbar {
     position: absolute;
     top: 0;

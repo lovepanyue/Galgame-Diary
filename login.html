@@ -113,6 +113,22 @@
     </style>
 </head>
 <body>
+    <!-- 顶部导航 -->
+    <header class="small-header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">Mieruの宝石箱</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> 首页</a></li>
+                <li><a href="about.html"><i class="fas fa-user"></i> 关于</a></li>
+                <li><a href="archive.html"><i class="fas fa-archive"></i> 游戏博客档案</a></li>
+                <li><a href="tags.html"><i class="fas fa-tags"></i> Tag分类</a></li>
+                <li><a href="login.html" class="login-link active"><i class="fas fa-sign-in-alt"></i> 登录</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <div class="login-container">
         <div class="login-card">
             <div class="login-header">
@@ -120,15 +136,15 @@
                 <p>登录您的账户</p>
             </div>
             
-            <form class="login-form">
+            <form class="login-form" id="loginForm">
                 <div class="form-group">
                     <label for="username">用户名</label>
-                    <input type="text" id="username" placeholder="输入用户名">
+                    <input type="text" id="username" placeholder="输入用户名" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="password">密码</label>
-                    <input type="password" id="password" placeholder="输入密码">
+                    <input type="password" id="password" placeholder="输入密码" required>
                 </div>
                 
                 <div class="remember-forgot">
@@ -139,4 +155,39 @@
                     <a href="#">忘记密码?</a>
                 </div>
                 
-                <button type="submit" class="login-btn"
+                <button type="submit" class="login-btn">登录</button>
+                
+                <div class="register-link">
+                    没有账号? <a href="#">立即注册</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2023 Mieruの宝石箱 - 海岛的夏日回忆</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-bilibili"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // 简单验证
+            if (username === '鹭泽有里咲' && password === 'py5201314') {
+                window.location.href = 'admin.html';
+            } else {
+                alert('用户名或密码错误');
+            }
+        });
+    </script>
+</body>
+</html>
