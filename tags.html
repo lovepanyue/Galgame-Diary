@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标签分类 - Mieruの宝石箱</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 标签页专属样式 */
+        .tags-container {
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+        
+        .tags-title {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .tags-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #3498db, #1a5276);
+            border-radius: 3px;
+        }
+        
+        .tag-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .tag-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tag-header {
+            background: linear-gradient(135deg, #3498db, #1a5276);
+            color: white;
+            padding: 20px;
+        }
+        
+        .tag-name {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .tag-count {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .tag-posts {
+            padding: 20px;
+        }
+        
+        .tag-post-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .tag-post-item:last-child {
+            border-bottom: none;
+        }
+        
+        .tag-post-title {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            text-decoration: none;
+            transition: color 0.3s;
+            margin-bottom: 5px;
+        }
+        
+        .tag-post-title:hover {
+            color: #3498db;
+        }
+        
+        .tag-post-meta {
+            display: flex;
+            gap: 15px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        /* 标签云样式 */
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 40px 0;
+            justify-content: center;
+        }
+        
+        .cloud-tag {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #f0f8ff, #e1f0fa);
+            color: #3498db;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .cloud-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .tag-name {
+                font-size: 1.3rem;
+            }
+            
+            .tag-cloud {
+                gap: 10px;
+            }
+            
+            .cloud-tag {
+                padding: 6px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <header class="small-header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">Mieruの宝石箱</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> 首页</a></li>
+                <li><a href="about.html"><i class="fas fa-user"></i> 关于</a></li>
+                <li><a href="archive.html"><i class="fas fa-archive"></i> 游戏博客档案</a></li>
+                <li><a href="tags.html" class="active"><i class="fas fa-tags"></i> Tag分类</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="tags-container">
+        <h1 class="tags-title">标签分类</h1>
+        
+        <div class="tag-cloud">
+            <a href="#" class="cloud-tag">游戏 (12)</a>
+            <a href="#" class="cloud-tag">动画 (18)</a>
+            <a href="#" class="cloud-tag">视觉小说 (7)</a>
+            <a href="#" class="cloud-tag">校园 (5)</a>
+            <a href="#" class="cloud-tag">催泪 (9)</a>
+            <a href="#" class="cloud-tag">奇幻 (15)</a>
+            <a href="#" class="cloud-tag">冒险 (8)</a>
+            <a href="#" class="cloud-tag">音乐 (6)</a>
+            <a href="#" class="cloud-tag">舞台剧 (4)</a>
+            <a href="#" class="cloud-tag">海岛 (7)</a>
+            <a href="#" class="cloud-tag">夏日 (11)</a>
+            <a href="#" class="cloud-tag">回忆 (9)</a>
+        </div>
+        
+        <div id="tags-container">
+            <!-- 标签列表由JS加载 -->
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2023 Mieruの宝石箱 - 海岛的夏日回忆</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-bilibili"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/posts.js"></script>
+    <script src="js/tags.js"></script>
+</body>
+</html>
